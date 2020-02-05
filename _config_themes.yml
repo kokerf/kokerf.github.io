@@ -24,7 +24,7 @@ minify: false
 custom_file_path:
   #head: source/_data/head.swig
   #header: source/_data/header.swig
-  #sidebar: source/_data/sidebar.swig
+  sidebar: source/_data/sidebar.swig
   #postMeta: source/_data/post-meta.swig
   #postBodyEnd: source/_data/post-body-end.swig
   footer: source/_data/footer.swig
@@ -40,10 +40,10 @@ custom_file_path:
 # ---------------------------------------------------------------
 
 favicon:
-  small: /images/favicon-16x16-next.png
-  medium: /images/favicon-32x32-next.png
-  apple_touch_icon: /images/apple-touch-icon-next.png
-  safari_pinned_tab: /images/logo.svg
+  small: /images/icon/favicon-16x16.png
+  medium: /images/icon/favicon-32x32.png
+  apple_touch_icon: /images/icon/apple-touch-icon.png
+  #safari_pinned_tab: /images/logo.svg
   #android_manifest: /images/manifest.json
   #ms_browserconfig: /images/browserconfig.xml
 
@@ -105,9 +105,9 @@ creative_commons:
 
 # Schemes
 #scheme: Muse
-#scheme: Mist
+scheme: Mist
 #scheme: Pisces
-scheme: Gemini
+# scheme: Gemini
 
 
 # ---------------------------------------------------------------
@@ -167,7 +167,7 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: images/avatar.jpg
+  url: images/icon/kokerf.jpg
   # If true, the avatar will be dispalyed in circle.
   rounded: false
   # If true, the avatar will be rotated with the cursor.
@@ -182,7 +182,8 @@ site_state: true
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
   GitHub: https://github.com/kokerf || github
-  E-Mail: kokerf@163.com || envelope
+  CSDN: https://github.com/kokerf || link
+  E-Mail: https://blog.csdn.net/kokerf || envelope
   #Weibo: https://weibo.com/yourname || weibo
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
@@ -195,7 +196,7 @@ social:
 social_icons:
   enable: true
   icons_only: false
-  transition: true
+  transition: false
 
 # Blog rolls
 links_settings:
