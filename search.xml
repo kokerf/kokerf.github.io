@@ -3,9 +3,12 @@
   <entry>
     <title>On-Manifold Preintegration</title>
     <url>/2020/02/04/imu-perint/</url>
-    <content><![CDATA[<h3 id="数学"><strong>1. 数学</strong></h3>
+    <content><![CDATA[<p>这是一篇流形上预积分的笔记。预积分用多次的IMU测量来构造这段时间运动的相对变化量，在优化的框架中，这个构造的量可以代替一帧一帧的IMU测量加入到pose的求解。IMU中的加速度计对时间进行两次积分可以得到位移，而陀螺仪一次积分可以得到角度。在已知<span class="math inline">\(T\)</span>时刻的PVR和到<span class="math inline">\(T+1\)</span>时刻之间的IMU测量，可以通过积分得到<span class="math inline">\(T+1\)</span>时刻的PVR。预积分的方法就是用来表示这两个时刻的相对PVR，且使得这个相对量与<span class="math inline">\(T\)</span>时刻的PVR无关。其中旋转有多种表示方式，包括欧拉角、旋转向量、四元数和<span class="math inline">\(SO(3)\)</span>。这篇笔记主要是针对16年的<code>On-Manifold Preintegration for Real-Time Visual-Inertial Odometry</code>论文的推导，在旋转表示上采用了<span class="math inline">\(SO(3)\)</span>。</p>
+<a id="more"></a>
+<h3 id="数学"><strong>1. 数学</strong></h3>
 <h4 id="李群李代数"><strong>1.1 李群李代数</strong></h4>
-<p>在预积分中，使用了李群<span class="math inline">\(SO(3)\)</span>来表示旋转。定义为<span class="math inline">\(SO(3)\doteq \{\mathbf R \in \mathbb R^{3\times3}: \mathbf R^T\mathbf R = \mathbf I, \text{det}(\mathbf R) = 1\}\)</span>，其切空间（tangent space）表示为<span class="math inline">\({\frak so}(3)\)</span>，为李代数。<span class="math inline">\({\frak so}(3)\)</span>可以用<span class="math inline">\(3\times3\)</span>的写对称矩阵表示，在<span class="math inline">\(\mathbb R^3\)</span>上的一个向量使用<code>hat</code>操作得到写对称矩阵： <a id="more"></a> <span class="math display">\[
+<p>在预积分中，使用了李群<span class="math inline">\(SO(3)\)</span>来表示旋转。定义为<span class="math inline">\(SO(3)\doteq \{\mathbf R \in \mathbb R^{3\times3}: \mathbf R^T\mathbf R = \mathbf I, \text{det}(\mathbf R) = 1\}\)</span>，其切空间（tangent space）表示为<span class="math inline">\({\frak so}(3)\)</span>，为李代数。<span class="math inline">\({\frak so}(3)\)</span>可以用<span class="math inline">\(3\times3\)</span>的反对称矩阵表示，在<span class="math inline">\(\mathbb R^3\)</span>上的一个向量使用<code>hat</code>操作得到反对称矩阵：</p>
+<p><span class="math display">\[
 \begin{equation}
 \mathbf\omega^{\wedge} = \begin{bmatrix}\omega_1\\\omega_2\\\omega_3\end{bmatrix}
 = \begin{bmatrix}0 &amp; -\omega_3 &amp; \omega_2\\ \omega_3 &amp; 0 &amp; -\omega_1\\ -\omega_2 &amp; \omega_1 &amp; 0\end{bmatrix} \in {\frak so}(3)
@@ -599,28 +602,13 @@ s\mathbf p_{ {\tt WC}_j}  =  s\mathbf p_{ {\tt WC}_i} + \mathbf R_{ {\tt WB}_i}\
 <li><a href="https://fzheng.me/2018/03/22/okvis-marginalization-base/" target="_blank" rel="noopener">OKVIS笔记</a></li>
 </ol>
 ]]></content>
+      <categories>
+        <category>VIO</category>
+      </categories>
       <tags>
         <tag>VIO</tag>
+        <tag>IMU</tag>
+        <tag>SLAM</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/02/04/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
   </entry>
 </search>
